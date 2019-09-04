@@ -26,16 +26,6 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         startAnimating()
-     
-//        let delay = 10 // seconds
-//               self.spinerActivity.startAnimating()
-//               DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
-//                   self.spinerActivity.stopAnimating()
-//                   self.spinerActivity.isHidden = true
-//
-//                   self.alert()
-//               }
-                   
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

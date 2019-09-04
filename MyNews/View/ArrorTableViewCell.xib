@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ErrorCell" id="KGk-i7-Jjw" customClass="ArrorTableViewCell" customModule="MyNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет подключения к интернету!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEp-TP-teT">
+                        <rect key="frame" x="8" y="10" width="258" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zO-jU-6Nl">
+                        <rect key="frame" x="274" y="10" width="38" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="systemBlueColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IEp-TP-teT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4QC-z8-Wlb"/>
+                    <constraint firstItem="8zO-jU-6Nl" firstAttribute="leading" secondItem="IEp-TP-teT" secondAttribute="trailing" constant="8" id="Fic-os-g0z"/>
+                    <constraint firstAttribute="trailing" secondItem="8zO-jU-6Nl" secondAttribute="trailing" constant="8" id="HtK-jT-xRP"/>
+                    <constraint firstAttribute="bottom" secondItem="IEp-TP-teT" secondAttribute="bottom" constant="10" id="JJ7-oZ-rxv"/>
+                    <constraint firstItem="IEp-TP-teT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gMJ-E2-KAs"/>
+                    <constraint firstAttribute="bottom" secondItem="8zO-jU-6Nl" secondAttribute="bottom" constant="10" id="nvD-PD-gNQ"/>
+                    <constraint firstItem="8zO-jU-6Nl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qqS-d5-OHb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="errorButton" destination="8zO-jU-6Nl" id="mGP-5S-woL"/>
+                <outlet property="errorText" destination="IEp-TP-teT" id="c6f-Ou-W0s"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="108"/>
+        </tableViewCell>
+    </objects>
+</document>

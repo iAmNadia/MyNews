@@ -16,9 +16,12 @@ import WebKit
 let cacheImage = NSCache<NSString, UIImage>()
 
 class NewsViewController: UITableViewController {
-    
+    var textErr = "No Connect!"
     let newsApiURL = "https://newsapi.org/v2/everything?q=android&from=2019-04-00&sortBy=publi%20shedAt&apiKey=26eddb253e7840f988aec61f2ece2907&page=2"
-     
+    @IBAction func reloadTap(){
+        tableView.reloadData()
+    }
+  
     var webView: WKWebView!
     var articles = [Article]()
     var spiner: UIActivityIndicatorView!
@@ -59,6 +62,7 @@ class NewsViewController: UITableViewController {
                 self.stopSpiner()
             } else {
                 self.alert()
+                self.tableView.reloadData()
             }
         }
     }
@@ -72,14 +76,24 @@ class NewsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let articles = self.articles[indexPath.row]
+        if articles.title.count == 0 {
+            let cell = Bundle.main.loadNibNamed("ArrorTableViewCell", owner: self, options: nil)?.first as! ArrorTableViewCell
+            let textarr = textErr
+            cell.errorText.text = textarr
         
-        let cell = Bundle.main.loadNibNamed("ArticleViewCell", owner: self, options: nil)?.first as! ArticleViewCell
-      
-        let article = self.articles[indexPath.row]
-        cell.config(article: article)
-    
-        return cell
+            return cell
+            
+        } else  {
+            let cell = Bundle.main.loadNibNamed("ArticleViewCell", owner: self, options: nil)?.first as! ArticleViewCell
+            
+            let article = self.articles[indexPath.row]
+            cell.config(article: article)
+            return cell
+            
+        }
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "urlSeque", sender: self)
     }
@@ -99,6 +113,16 @@ class NewsViewController: UITableViewController {
             }
         }
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let translate = CATransform3DTranslate(CATransform3DIdentity, -500, 400, 0)
+        cell.layer.transform = translate
+        
+        UIView.animate(withDuration: 1, delay: 0.2 * Double(indexPath.row), options: .curveEaseInOut, animations: {
+            cell.layer.transform = CATransform3DIdentity
+        })
+    }
+    
     func startSpiner() {
         self.spiner = UIActivityIndicatorView(style: .whiteLarge)
         self.spiner.color = UIColor .gray
@@ -106,27 +130,27 @@ class NewsViewController: UITableViewController {
         self.spiner.center = self.tableView.center
         self.spiner.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-       
+        
     }
     func stopSpiner() {
         self.spiner.stopAnimating()
         self.spiner.removeFromSuperview()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-   
-      func alert() {
-             let alertController = UIAlertController(
-                 title: "Нет соединения с интернетом",
-                 message: "Проверьте, что имеется соединение с интернетом",
-                 preferredStyle: .alert)
-             let alertButtonOne = UIAlertAction(title: "ОК", style: .default, handler: nil)
-             let alertButtonTwo = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-             alertController.addAction(alertButtonOne)
-             alertController.addAction(alertButtonTwo)
-             
-             self.present(alertController, animated: true, completion: nil)
-         }
-     }
+    
+    func alert() {
+        let alertController = UIAlertController(
+            title: "Нет соединения с интернетом",
+            message: "Проверьте, что имеется соединение с интернетом",
+            preferredStyle: .alert)
+        let alertButtonOne = UIAlertAction(title: "ОК", style: .default, handler: nil)
+        let alertButtonTwo = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        alertController.addAction(alertButtonOne)
+        alertController.addAction(alertButtonTwo)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
 
 extension UIImageView {
     
