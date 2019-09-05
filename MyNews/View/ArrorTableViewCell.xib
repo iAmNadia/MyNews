@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,31 +17,29 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет подключения к интернету!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEp-TP-teT">
-                        <rect key="frame" x="8" y="10" width="258" height="24"/>
+                        <rect key="frame" x="8" y="10" width="247" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zO-jU-6Nl">
-                        <rect key="frame" x="274" y="10" width="38" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="systemBlueColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uz-qH-qWt">
+                        <rect key="frame" x="263" y="8" width="49" height="28"/>
+                        <state key="normal" title="Reload"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="2uz-qH-qWt" firstAttribute="leading" secondItem="IEp-TP-teT" secondAttribute="trailing" constant="8" id="1Cs-tS-KMT"/>
                     <constraint firstItem="IEp-TP-teT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4QC-z8-Wlb"/>
-                    <constraint firstItem="8zO-jU-6Nl" firstAttribute="leading" secondItem="IEp-TP-teT" secondAttribute="trailing" constant="8" id="Fic-os-g0z"/>
-                    <constraint firstAttribute="trailing" secondItem="8zO-jU-6Nl" secondAttribute="trailing" constant="8" id="HtK-jT-xRP"/>
+                    <constraint firstAttribute="bottom" secondItem="2uz-qH-qWt" secondAttribute="bottom" constant="8" id="5Iu-87-cT2"/>
+                    <constraint firstAttribute="trailing" secondItem="2uz-qH-qWt" secondAttribute="trailing" constant="8" id="8Fg-lk-g5M"/>
                     <constraint firstAttribute="bottom" secondItem="IEp-TP-teT" secondAttribute="bottom" constant="10" id="JJ7-oZ-rxv"/>
                     <constraint firstItem="IEp-TP-teT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gMJ-E2-KAs"/>
-                    <constraint firstAttribute="bottom" secondItem="8zO-jU-6Nl" secondAttribute="bottom" constant="10" id="nvD-PD-gNQ"/>
-                    <constraint firstItem="8zO-jU-6Nl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qqS-d5-OHb"/>
+                    <constraint firstItem="2uz-qH-qWt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="yTi-ic-Z8a"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="errorButton" destination="8zO-jU-6Nl" id="mGP-5S-woL"/>
+                <outlet property="errorButton" destination="2uz-qH-qWt" id="ulz-WS-5Dt"/>
                 <outlet property="errorText" destination="IEp-TP-teT" id="c6f-Ou-W0s"/>
             </connections>
             <point key="canvasLocation" x="139" y="108"/>

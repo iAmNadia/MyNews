@@ -11,7 +11,8 @@ import UIKit
 class ArrorTableViewCell: UITableViewCell {
 
     @IBOutlet weak var errorText: UILabel!
-    @IBOutlet weak var errorButton:UILabel!
+    @IBOutlet weak var errorButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

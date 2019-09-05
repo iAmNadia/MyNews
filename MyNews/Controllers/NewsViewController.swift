@@ -18,10 +18,7 @@ let cacheImage = NSCache<NSString, UIImage>()
 class NewsViewController: UITableViewController {
     var textErr = "No Connect!"
     let newsApiURL = "https://newsapi.org/v2/everything?q=android&from=2019-04-00&sortBy=publi%20shedAt&apiKey=26eddb253e7840f988aec61f2ece2907&page=2"
-    @IBAction func reloadTap(){
-        tableView.reloadData()
-    }
-  
+    
     var webView: WKWebView!
     var articles = [Article]()
     var spiner: UIActivityIndicatorView!
@@ -76,22 +73,29 @@ class NewsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let articles = self.articles[indexPath.row]
-        if articles.title.count == 0 {
+        
+        let cell = Bundle.main.loadNibNamed("ArticleViewCell", owner: self, options: nil)?.first as! ArticleViewCell
+        
+        let article = self.articles[indexPath.row]
+        cell.config(article: article)
+        
+        if cell.TextLabel?.text == nil && cell.titleLabel.text == nil {
+            
             let cell = Bundle.main.loadNibNamed("ArrorTableViewCell", owner: self, options: nil)?.first as! ArrorTableViewCell
             let textarr = textErr
             cell.errorText.text = textarr
-        
+            cell.errorButton.tag = indexPath.row
+            cell.errorButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
+            
             return cell
-            
-        } else  {
-            let cell = Bundle.main.loadNibNamed("ArticleViewCell", owner: self, options: nil)?.first as! ArticleViewCell
-            
-            let article = self.articles[indexPath.row]
-            cell.config(article: article)
-            return cell
-            
         }
+        return cell
+    }
+    
+    @objc func editButtonPressed(_ sender: UIButton) {
+        tableView.reloadData()
+        print(sender.tag)
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
